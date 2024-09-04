@@ -1,46 +1,56 @@
 //{ Driver Code Starts
-//Initial template for C++
-
+// Initial template for C++
 #include <bits/stdc++.h>
 using namespace std;
 
-// } Driver Code Ends
-//User function template for C++
 
-class Solution{   
-public:
-    void segregate0and1(int arr[], int n) {
+// } Driver Code Ends
+// User function template for C++
+
+class Solution {
+  public:
+    void segregate0and1(vector<int> &arr) {
         // code here
-        int count0=0;
-        int count1=0;
-        for(int i=0;i<n;i++)
+        int start=0, end=arr.size()-1;
+        
+        while(start<end)
         {
-            if(arr[i]==0)
-            count0++;
+            if(arr[start]==0)
+            {
+                start++;
+            }
+            else if(arr[end]==0)
+            {
+                swap(arr[start],arr[end]);
+                start++;
+                end--;
+            }
             else
-            count1++;
+            {
+                end--;
+            }
         }
-        for(int i=0;i<count0;i++)
-        arr[i]=0;
-        for(int i=count0;i<n;i++)
-        arr[i]=1;
     }
 };
 
 //{ Driver Code Starts.
-
 int main() {
     int t;
+
     cin >> t;
+    cin.ignore();
     while (t--) {
-        int n;
-        cin >> n;
-        int arr[n];
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
         }
+        int n = arr.size();
         Solution ob;
-        ob.segregate0and1(arr, n);
+        ob.segregate0and1(arr);
         for (int i = 0; i < n; i++) {
             cout << arr[i] << " ";
         }
