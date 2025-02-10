@@ -13,22 +13,22 @@ using namespace std;
 class Solution {
   public:
     int largest(vector<int> &arr) {
-        // code here'
+        // code here
         int n=arr.size();
         int max=arr[0];
-        if(arr.empty())
+        if (arr.empty())
         return -1;
         for(int i=0;i<n;i++)
         {
-            if(arr[i]>max)
+            if (arr[i]>max)
             {
                 max=arr[i];
             }
         }
-        return max;
+         return max;
     }
 };
-
+// User function Template for C++
 
 //{ Driver Code Starts.
 
@@ -51,6 +51,7 @@ int main() {
 
         Solution ob;
         cout << ob.largest(arr) << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
