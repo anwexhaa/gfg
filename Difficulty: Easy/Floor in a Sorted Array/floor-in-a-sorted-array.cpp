@@ -6,23 +6,22 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    // Function to find floor of x
-    // n: size of vector
-    // x: element whose floor is to find
-    int findFloor(vector<long long> &v, long long n, long long x) {
+
+    int findFloor(vector<int>& arr, int k) {
 
         // Your code here
+        int n=arr.size();
         int low=-1;
-        int start=0,end=n-1,mid;
+        int start=0, end=n-1, mid;
         
         while(start<=end)
         {
             mid=start+(end-start)/2;
-            if(v[mid]==x)
+            if(arr[mid]==k)
             {
                 return mid;
             }
-            else if(v[mid]<x)
+            else if(arr[mid]<k)
             {
                 start=mid+1;
                 low=mid;
@@ -38,29 +37,28 @@ class Solution {
 
 
 //{ Driver Code Starts.
-
 int main() {
-
-    long long t;
-    cin >> t;
-
+    string ts;
+    getline(cin, ts);
+    int t = stoi(ts);
     while (t--) {
-        long long n;
-        cin >> n;
-        long long x;
-        cin >> x;
 
-        vector<long long> v;
-
-        for (long long i = 0; i < n; i++) {
-            long long temp;
-            cin >> temp;
-            v.push_back(temp);
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
         }
-        Solution obj;
-        cout << obj.findFloor(v, n, x) << endl;
-    }
+        string ks;
+        getline(cin, ks);
+        int k = stoi(ks);
+        Solution ob;
+        int ans = ob.findFloor(arr, k);
 
+        cout << ans << endl;
+    }
     return 0;
 }
 // } Driver Code Ends
