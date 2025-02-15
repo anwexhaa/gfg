@@ -10,31 +10,31 @@ using namespace std;
 
 class Solution {
   public:
-    vector<int> getFloorAndCeil(int x, vector<int> &arr) {
+    vector<int> getFloorAndCeil(int k, vector<int> &arr) {
         // code here
-        int start=0,end=arr.size()-1,mid;
-        int ceiling=-1, floor=-1;
+        int n=arr.size();
+        int start=0, end=n-1, mid, low=-1, high=-1;
         sort(arr.begin(),arr.end());
         
         while(start<=end)
         {
             mid=start+(end-start)/2;
-            if(arr[mid]==x)
+            if(arr[mid]==k)
             {
-                return {x,x};
+                return {k,k};
             }
-            else if (arr[mid]<x)
+            else if(arr[mid]<k)
             {
                 start=mid+1;
-                floor=arr[mid];
+                low=arr[mid];
             }
             else
             {
                 end=mid-1;
-                ceiling=arr[mid];
+                high=arr[mid];
             }
         }
-         return {floor, ceiling};
+        return {low,high};
     }
 };
 
@@ -60,7 +60,7 @@ int main() {
 
         Solution ob;
         auto ans = ob.getFloorAndCeil(x, arr);
-        cout << ans[0] << " " << ans[1] << "\n";
+        cout << ans[0] << " " << ans[1] << "\n~\n";
     }
     return 0;
 }
