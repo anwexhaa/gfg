@@ -15,17 +15,13 @@ class Solution {
     int largest(vector<int> &arr) {
         // code here
         int n=arr.size();
-        int max=arr[0];
-        if (arr.empty())
-        return -1;
+        int maxi=0;
+        if(arr.empty()) return -1;
         for(int i=0;i<n;i++)
         {
-            if (arr[i]>max)
-            {
-                max=arr[i];
-            }
+            maxi=max(maxi,arr[i]);
         }
-         return max;
+        return maxi;
     }
 };
 // User function Template for C++
