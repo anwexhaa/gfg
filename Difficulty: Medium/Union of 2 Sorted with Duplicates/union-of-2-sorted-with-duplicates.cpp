@@ -5,60 +5,31 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 class Solution {
   public:
     // a,b : the arrays
     // Function to return a list containing the union of the two arrays.
-    vector<int> findUnion(vector<int> &arr1, vector<int> &arr2) {
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
         // Your code here
         // return vector with correct order of elements
-        int n=arr1.size();
-        int m=arr2.size();
-        int i=0,j=0;
-        vector<int> unionArr;
         
-        while(i<n && j<m){
-            if(i>0 && arr1[i]==arr1[i-1]){
-                i++;
-                continue;
-            }
-            if(j>0 && arr2[j]==arr2[j-1]){
-                j++;
-                continue;
-            }
-            if(arr1[i]<arr2[j])
-            {
-                unionArr.push_back(arr1[i]);
-                i++;
-            }
-            else if (arr1[i]>arr2[j])
-            {
-                unionArr.push_back(arr2[j]);
-                j++;
-            }
-            else
-            {
-                unionArr.push_back(arr1[i]);
-                i++;
-                j++;
+        vector<int> ans;
+        ans.insert(ans.end(),a.begin(),a.end());
+        ans.insert(ans.end(),b.begin(),b.end());
+        sort(ans.begin(),ans.end());
+        
+        vector<int> result;
+        for (int i = 0; i < ans.size(); i++) {
+            if (result.empty() || result.back() != ans[i]) {
+                result.push_back(ans[i]);
             }
         }
-            while(i<n){
-                if(i==0 || arr1[i]!=arr1[i-1]){
-                    unionArr.push_back(arr1[i]);
-            }
-            i++;
-            }
-            while(j<m){
-                if(j==0 || arr2[j]!=arr2[j-1]){
-                    unionArr.push_back(arr2[j]);
-            }
-            j++;
-            }
         
-        return unionArr;
+        return result;
     }
 };
+
 
 //{ Driver Code Starts.
 int main() {
