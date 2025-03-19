@@ -13,19 +13,21 @@ class Solution {
     vector<int> findUnion(vector<int> &a, vector<int> &b) {
         // Your code here
         // return vector with correct order of elements
-        
-        vector<int> ans;
-        ans.insert(ans.end(),a.begin(),a.end());
-        ans.insert(ans.end(),b.begin(),b.end());
-        sort(ans.begin(),ans.end());
-        
-        vector<int> result;
-        for (int i = 0; i < ans.size(); i++) {
-            if (result.empty() || result.back() != ans[i]) {
-                result.push_back(ans[i]);
-            }
+        unordered_map<int,int>freq;
+        vector<int>result;
+        for(int i=0;i<a.size();i++)
+        {
+            freq[a[i]]++;
         }
-        
+        for(int i=0;i<b.size();i++)
+        {
+            freq[b[i]]++;
+        }
+        for(auto it=freq.begin();it!=freq.end();it++)
+        {
+            result.push_back(it->first);
+        }
+        sort(result.begin(),result.end());
         return result;
     }
 };
