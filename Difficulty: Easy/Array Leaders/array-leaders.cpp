@@ -6,28 +6,29 @@ using namespace std;
 // } Driver Code Ends
 
 
+
 class Solution {
     // Function to find the leaders in the array.
   public:
     vector<int> leaders(vector<int>& arr) {
         // Code here
         int n=arr.size();
-        vector<int> ans;
-        int max_right=arr[n-1];
-        ans.push_back(max_right);
-        
+        vector<int> temp;
+        int right=arr[n-1];
+        temp.push_back(right);
         for(int i=n-2;i>=0;i--)
         {
-            if(arr[i]>=max_right)
+            if(arr[i]>=right)
             {
-                max_right=arr[i];
-                ans.push_back(arr[i]);
+                right=arr[i];
+                temp.push_back(arr[i]);
             }
         }
-        reverse(ans.begin(),ans.end());
-        return ans;
+        reverse(temp.begin(),temp.end());
+        return temp;
     }
 };
+
 
 //{ Driver Code Starts.
 
