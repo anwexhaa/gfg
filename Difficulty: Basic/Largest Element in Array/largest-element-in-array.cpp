@@ -8,15 +8,15 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 // User function Template for C++
 
 class Solution {
   public:
     int largest(vector<int> &arr) {
         // code here
+        int maxi=INT_MIN;
         int n=arr.size();
-        int maxi=0;
-        if(arr.empty()) return -1;
         for(int i=0;i<n;i++)
         {
             maxi=max(maxi,arr[i]);
@@ -24,7 +24,8 @@ class Solution {
         return maxi;
     }
 };
-// User function Template for C++
+
+
 
 //{ Driver Code Starts.
 
