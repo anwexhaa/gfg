@@ -5,24 +5,29 @@ using namespace std;
 
 
 // } Driver Code Ends
-// User function Template for C++
+
 class Solution {
   public:
-    // Function to find the sum of contiguous subarray with maximum sum.
-    long long maxSubarraySum(vector<int> &arr) {
-        // code here...
-        long long maxi = INT_MIN, prefix=0;
+    int maxSubarraySum(vector<int> &arr) {
+        // Your code here
+        int n=arr.size();
+        int maxi=INT_MIN;
+        int sum=0;
         
-        for (int i=0;i<arr.size();i++)
+        for(int i=0;i<n;i++)
         {
-            prefix+=arr[i];
-            maxi=max(prefix,maxi);
-            if(prefix<0)
-            prefix=0;
+            sum+=arr[i];
+            maxi=max(maxi,sum);
+            if(sum<0)
+            {
+                sum=0;
+            }
         }
         return maxi;
+        
     }
 };
+
 
 //{ Driver Code Starts.
 
@@ -42,7 +47,7 @@ int main() {
         }
 
         Solution ob;
-        cout << ob.maxSubarraySum(arr) << endl;
+        cout << ob.maxSubarraySum(arr) << endl << "~" << endl;
     }
 }
 // } Driver Code Ends
