@@ -4,7 +4,6 @@ class Solution {
         // code here
         if(s1.size()!=s2.size()) return false;
         int freq[26]={0};
-        
         for(int i=0;i<s1.size();i++)
         {
             freq[s1[i]-'a']++;
@@ -13,7 +12,9 @@ class Solution {
         for(int i=0;i<26;i++)
         {
             if(freq[i]!=0)
-            return false;
+            {
+                return false;
+            }
         }
         return true;
     }
